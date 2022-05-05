@@ -4,10 +4,12 @@ import torchvision.transforms as transforms
 from PIL import Image
 from torch.utils.data import DataLoader, Subset, Dataset, ConcatDataset
 from torchvision.datasets import DatasetFolder
-import matplotlib.pyplot as plt
 import numpy as np
 import time
 from sklearn.manifold import TSNE
+
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 torch.manual_seed(135)
 
@@ -127,7 +129,8 @@ def plot_with_labels(lowDWeights, labels):
     labels = np.ravel(labels)
     classes = list(np.unique(labels))
     markers = 'os' * len(classes)
-    colors = plt.cm.rainbow(np.linspace(0, 1, len(classes)))
+    colors = sns.color_palette("husl",25)
+    # colors = plt.cm.rainbow(np.linspace(0, 1, len(classes)))
     for x, y, s in zip(X, Y, labels):
         i = int(s)
         # plt.text(x, y, s, backgroundcolor=colors[i], fontsize=8)
