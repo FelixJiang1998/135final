@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.manifold import TSNE
 import time
 import matplotlib.pyplot import plt
+import seaborn as sns
 
 def visualization(X, y_target):
 
@@ -13,7 +14,7 @@ def visualization(X, y_target):
 
     classes = list(np.unique(labels))
     markers = 'os' * len(classes)
-    colors = plt.cm.rainbow(np.linspace(0, 1, len(classes)))
+    colors = sns(np.linspace(0, 1, len(classes)))
     for x, y, s in zip(X, Y, labels):
         i = int(s)
         plt.scatter(x, y, marker=markers[i], c=[colors[i]], alpha=0.3)
